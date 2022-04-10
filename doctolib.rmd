@@ -70,10 +70,13 @@ icons <- awesomeIcons(
   markerColor = getColor(result)
 )
 
-leaflet(data = result) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+carte <-leaflet(data = result) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
   addTiles() %>%
   addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
                     popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
 
 ```
 
+```{r, eval=F}
+saveWidget(widget=carte,file="carte_doctolib1.html")
+```
