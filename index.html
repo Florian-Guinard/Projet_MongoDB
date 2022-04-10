@@ -1,0 +1,188 @@
+
+
+<!doctype html>
+<html lang="fr"></html>
+<head></head>
+    <meta charset="utf-8">
+    
+    <meta name="generator" content="pandoc" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    
+<style type="text/css">
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+      </style>
+  
+  <style type="text/css">code{white-space: pre;}</style>
+  <script type="text/javascript">
+  if (window.hljs) {
+    hljs.configure({languages: []});
+    hljs.initHighlightingOnLoad();
+    if (document.readyState && document.readyState === "complete") {
+      window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+    }
+  }
+  </script>
+  
+  
+  
+  
+  
+  
+  
+  
+  <style type="text/css">
+  .main-container {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  img {
+    max-width:100%;
+  }
+  .tabbed-pane {
+    padding-top: 12px;
+  }
+  .html-widget {
+    margin-bottom: 20px;
+  }
+  button.code-folding-btn:focus {
+    outline: none;
+  }
+  summary {
+    display: list-item;
+  }
+  pre code {
+    padding: 0;
+  }
+  </style>
+  
+  
+  
+  <!-- tabsets -->
+  
+  <style type="text/css">
+  .tabset-dropdown > .nav-tabs {
+    display: inline-table;
+    max-height: 500px;
+    min-height: 44px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .tabset-dropdown > .nav-tabs > li.active:before {
+    content: "";
+    font-family: 'Glyphicons Halflings';
+    display: inline-block;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+    content: "";
+    border: none;
+  }
+  
+  .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+    content: "";
+    font-family: 'Glyphicons Halflings';
+    display: inline-block;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .tabset-dropdown > .nav-tabs > li.active {
+    display: block;
+  }
+  
+  .tabset-dropdown > .nav-tabs > li > a,
+  .tabset-dropdown > .nav-tabs > li > a:focus,
+  .tabset-dropdown > .nav-tabs > li > a:hover {
+    border: none;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+  
+  .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+    display: block;
+    float: none;
+  }
+  
+  .tabset-dropdown > .nav-tabs > li {
+    display: none;
+  }
+  </style>
+    <title>Projet MongoDB</title>
+</head>
+<body>
+    <h1>Exercice 1 Centres de vaccination Covid19</h1>
+    
+    <div class="container-fluid main-container">
+
+
+
+
+    <div id="header">
+    
+    
+    
+    
+    </div>
+    
+    
+    <div id="htmlwidget-61c225d092468c97524f" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-61c225d092468c97524f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"setView":[["48.117266","-1.6777926"],8,[]],"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addAwesomeMarkers","args":[[48.0552,47.9642,48.5495,48.1181,48.1104,48.3344,47.718],[-1.73228,-1.79528,-1.74728,-1.70075,-1.65391,-1.17127,-1.38837],{"icon":"ios-close","markerColor":["red","red","green","orange","orange","green","green"],"iconColor":"black","spin":false,"squareMarker":false,"iconRotate":0,"font":"monospace","prefix":"ion"},null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["BRUZ - CDV Parc Expo <br/>Nombre de créneaux disponibles : 100","GUICHEN - Espace Galatée <br/>Nombre de créneaux disponibles : 104","DOL DE BGNE-Club de l'amitié <br/>Nombre de créneaux disponibles : 656","RENNES - Grand centre stade Robert Poirier <br/>Nombre de créneaux disponibles : 226","RENNES - Centre Plaine de Baud (SDIS) <br/>Nombre de créneaux disponibles : 226","FOUGERES - Espace Aumaillerie <br/>Nombre de créneaux disponibles : 612","Centre de Vaccination COVID - CHATEAUBRIANT <br/>Nombre de créneaux disponibles : 578"],null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[47.718,48.5495],"lng":[-1.79528,-1.17127]}},"evals":[],"jsHooks":[]}</script>
+    
+    
+    
+    
+    </div>
+    
+    <script>
+    
+    // add bootstrap table styles to pandoc tables
+    function bootstrapStylePandocTables() {
+      $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+    }
+    $(document).ready(function () {
+      bootstrapStylePandocTables();
+    });
+    
+    
+    </script>
+    
+    <!-- tabsets -->
+    
+    <script>
+    $(document).ready(function () {
+      window.buildTabsets("TOC");
+    });
+    
+    $(document).ready(function () {
+      $('.tabset-dropdown > .nav-tabs > li').click(function () {
+        $(this).parent().toggleClass('nav-tabs-open');
+      });
+    });
+    </script>
+    
+    <!-- code folding -->
+    
+    
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+      (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+        document.getElementsByTagName("head")[0].appendChild(script);
+      })();
+    </script>
+</body>
+
+</html>

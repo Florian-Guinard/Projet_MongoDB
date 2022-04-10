@@ -1,0 +1,79 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("mongolite")
+library("rmarkdown")
+library("tidyverse")
+library("leaflet")
+
+url="mongodb://etudiant:ur2@clusterm1-shard-00-00.0rm7t.mongodb.net:27017,clusterm1-shard-00-01.0rm7t.mongodb.net:27017,clusterm1-shard-00-02.0rm7t.mongodb.net:27017/?ssl=true&replicaSet=atlas-l4xi61-shard-0"
+
+mdb = mongo(collection="dump_Jan2022", db="doctolib",
+            url=url,
+            verbose=TRUE)
+            
+```
+
+```{r,echo=FALSE,include=FALSE}
+requete1 = mdb$aggregate('[{
+    "$geoNear": {
+        "near": {"type": "Point", "coordinates": [-1.6777926, 48.117266]},
+        "distanceField": "dist",
+        "maxDistance": 50000
+        }},
+    {"$unwind":"$visit_motives"},
+    {"$unwind":"$visit_motives.slots"},
+    {"$group":{"_id":{"location":"$location",
+                      "nom":"$name"},
+               "nb_creneaux":{"$sum":1}}}
+]')
+
+
+
+```
+
+```{r,echo=FALSE,include=FALSE}
+nom<- as.tibble(requete1[[1]]$nom)
+nb_creneau <- as.tibble(requete1[[2]])
+requete1 <- as.tibble(requete1)
+
+
+coord<-t(as.data.frame(requete1[[1]]$location$coordinates))
+
+coord <-as.tibble(coord)
+
+result <- cbind(nom,coord,nb_creneau) 
+
+colnames(result) <- c("location","Longitude","Latitude","nb_creneaux")
+
+```
+
+```{r,echo=FALSE}
+Rennes <- c("-1.6777926","48.117266")
+
+
+getColor <- function(df) {
+  sapply(df$nb_creneaux, function(nb_creneaux) {
+  if(nb_creneaux <= 200) {
+    "red"
+  } else if(nb_creneaux <= 400) {
+    "orange"
+  } else {
+    "green"
+  } })
+}
+
+icons <- awesomeIcons(
+  icon = 'ios-close',
+  iconColor = 'black',
+  library = 'ion',
+  markerColor = getColor(result)
+)
+
+leaflet(data = result) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+  addTiles() %>%
+  addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
+                    popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
+
+```
+
