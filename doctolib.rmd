@@ -77,6 +77,3 @@ carte <-leaflet(data = result) %>% setView(lng = Rennes[1], lat = Rennes[2], zoo
 
 ```
 
-```{r, eval=F}
-saveWidget(widget=carte,file="carte_doctolib1.html")
-```
