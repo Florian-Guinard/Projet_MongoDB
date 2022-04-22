@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import networkx as nx
-import numpy as pd
 
 db_uri = "mongodb+srv://etudiant:ur2@clusterm1.0rm7t.mongodb.net/"
 client = MongoClient(db_uri)
@@ -34,8 +33,8 @@ for elem in l:
     dico["publications"] = elem["les_titres"]
     liste_dico.append(dico)
 
-print(liste_dico)
-print("*"*20)
+# print(liste_dico)
+
 
 # Comparaison des auteurs 2 à 2 pour savoir leurs nombres de co-publications
 myNodesList = [] # liste des auteurs
@@ -60,7 +59,7 @@ pods_of_links = []
 for (node1,node2,data) in G.edges(data=True):
         pods_of_links.append(data['weight'])
 
-
+# Ajout des couleurs au noeuds
 list_color = []
 for auteur in liste_dico:
     if auteur["nb_publi"] > 12:
