@@ -15,7 +15,7 @@ mdb = mongo(collection="dump_Jan2022", db="doctolib",
 ```
 
 ```{r,echo=FALSE,include=FALSE}
-requete1 = mdb$aggregate('[{
+requete1 <- mdb$aggregate('[{
     "$geoNear": {
         "near": {"type": "Point", "coordinates": [-1.6777926, 48.117266]},
         "distanceField": "dist",
@@ -31,6 +31,18 @@ requete1 = mdb$aggregate('[{
 
 
 ```
+
+```{r}
+requete3 <- mdb$aggregate('[
+    
+    {"$unwind":"$visit_motives"},
+    {"$unwind":"$visit_motives.slots"},
+    "$match":{"visit_motives.slots":{"$gte":ISODate("2022-01-26"),
+                                     "$lt":ISODate("2022-01-30")}}
+]')
+```
+
+
 
 ```{r,echo=FALSE,include=FALSE}
 nom<- as.tibble(requete1[[1]]$nom)
