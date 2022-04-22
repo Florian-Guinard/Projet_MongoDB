@@ -15,7 +15,8 @@ mdb = mongo(collection="dump_Jan2022", db="doctolib",
 ```
 
 ```{r,echo=FALSE,include=FALSE}
-requete1 <- mdb$aggregate('[{
+requete1 <- mdb$aggregate('[
+                          {
     "$geoNear": {
         "near": {"type": "Point", "coordinates": [-1.6777926, 48.117266]},
         "distanceField": "dist",
@@ -23,28 +24,45 @@ requete1 <- mdb$aggregate('[{
         }},
     {"$unwind":"$visit_motives"},
     {"$unwind":"$visit_motives.slots"},
+    {"$match":{"visit_motives.slots":{"$gte": {"$date": "2022-01-26T00:00:00Z"},
+                                      "$lt": {"$date": "2022-01-30T00:00:00Z"}}}},
     {"$group":{"_id":{"location":"$location",
                       "nom":"$name"},
                "nb_creneaux":{"$sum":1}}}
+    
+  
 ]')
 
 
 
 ```
 
-```{r}
-requete3 <- mdb$aggregate('[
-    
+```{r,echo=FALSE,include=FALSE}
+requete2 <- mdb$aggregate('[
+                          {
+    "$geoNear": {
+        "near": {"type": "Point", "coordinates": [-1.6777926, 48.117266]},
+        "distanceField": "dist",
+        "maxDistance": 50000
+        }},
     {"$unwind":"$visit_motives"},
     {"$unwind":"$visit_motives.slots"},
-    "$match":{"visit_motives.slots":{"$gte":ISODate("2022-01-26"),
-                                     "$lt":ISODate("2022-01-30")}}
+    {"$match":{"visit_motives.slots":{"$gte": {"$date": "2022-01-01T00:00:00Z"},
+                                      "$lt": {"$date": "2022-06-02T00:00:00Z"}}}},
+    {"$group":{"_id":{"location":"$location",
+                      "nom":"$name"},
+               "nb_creneaux":{"$sum":1}}}
+    
+  
 ]')
 ```
 
 
 
 ```{r,echo=FALSE,include=FALSE}
+
+# Mise en forme des données de la première requete
+
 nom<- as.tibble(requete1[[1]]$nom)
 nb_creneau <- as.tibble(requete1[[2]])
 requete1 <- as.tibble(requete1)
@@ -54,35 +72,80 @@ coord<-t(as.data.frame(requete1[[1]]$location$coordinates))
 
 coord <-as.tibble(coord)
 
-result <- cbind(nom,coord,nb_creneau) 
+result1 <- cbind(nom,coord,nb_creneau) 
 
-colnames(result) <- c("location","Longitude","Latitude","nb_creneaux")
+colnames(result1) <- c("location","Longitude","Latitude","nb_creneaux")
 
 ```
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,include=FALSE}
 Rennes <- c("-1.6777926","48.117266")
 
-
+# La couleur dépend des nombresde créneaux en prenant les quantiles
 getColor <- function(df) {
-  sapply(df$nb_creneaux, function(nb_creneaux) {
-  if(nb_creneaux <= 200) {
+  quanti1 <- quantile(df$nb_creneaux, probs = 0.33)
+  quanti2 <- quantile(df$nb_creneaux, probs = 0.66)
+  sapply(df$nb_creneaux, function(nb_creneaux){
+  if(nb_creneaux <= quanti1) {
     "red"
-  } else if(nb_creneaux <= 400) {
+  } else if(nb_creneaux <= quanti2) {
     "orange"
   } else {
     "green"
   } })
 }
+```
+
+
+
+```{r,echo=FALSE}
+
 
 icons <- awesomeIcons(
   icon = 'ios-close',
   iconColor = 'black',
   library = 'ion',
-  markerColor = getColor(result)
+  markerColor = getColor(result1)
 )
 
-leaflet(data = result) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+leaflet(data = result1) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+  addTiles() %>%
+  addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
+                    popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
+
+```
+
+```{r,echo=FALSE,include=FALSE}
+# Mise en forme des données de la deuxieme requete
+
+nom<- as.tibble(requete2[[1]]$nom)
+nb_creneau <- as.tibble(requete2[[2]])
+requete2 <- as.tibble(requete2)
+
+
+coord<-t(as.data.frame(requete2[[1]]$location$coordinates))
+
+coord <-as.tibble(coord)
+
+result2 <- cbind(nom,coord,nb_creneau) 
+
+colnames(result2) <- c("location","Longitude","Latitude","nb_creneaux")
+
+```
+
+
+
+
+
+```{r, echo=FALSE}
+icons <- awesomeIcons(
+  icon = 'ios-close',
+  iconColor = 'black',
+  library = 'ion',
+  markerColor = getColor(result2)
+)
+
+leaflet(data = result2) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
   addTiles() %>%
   addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
                     popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
