@@ -1,3 +1,13 @@
+---
+title: "Untitled"
+output: 
+
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+runtime: shiny
+---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -5,6 +15,8 @@ library("mongolite")
 library("rmarkdown")
 library("tidyverse")
 library("leaflet")
+library("flexdashboard")
+
 
 url="mongodb://etudiant:ur2@clusterm1-shard-00-00.0rm7t.mongodb.net:27017,clusterm1-shard-00-01.0rm7t.mongodb.net:27017,clusterm1-shard-00-02.0rm7t.mongodb.net:27017/?ssl=true&replicaSet=atlas-l4xi61-shard-0"
 
@@ -98,19 +110,19 @@ getColor <- function(df) {
 
 
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,include=FALSE}
 
 
-icons <- awesomeIcons(
+icons1 <- awesomeIcons(
   icon = 'ios-close',
   iconColor = 'black',
   library = 'ion',
   markerColor = getColor(result1)
 )
 
-leaflet(data = result1) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+carte1<-leaflet(data = result1) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
   addTiles() %>%
-  addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
+  addAwesomeMarkers(~Longitude,~Latitude,icon=icons1, 
                     popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
 
 ```
@@ -134,21 +146,46 @@ colnames(result2) <- c("location","Longitude","Latitude","nb_creneaux")
 ```
 
 
-
-
-
-```{r, echo=FALSE}
-icons <- awesomeIcons(
+```{r, echo=FALSE,include=FALSE}
+icons2 <- awesomeIcons(
   icon = 'ios-close',
   iconColor = 'black',
   library = 'ion',
   markerColor = getColor(result2)
 )
 
-leaflet(data = result2) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
+carte2<- leaflet(data = result2) %>% setView(lng = Rennes[1], lat = Rennes[2], zoom = 8) %>% 
   addTiles() %>%
-  addAwesomeMarkers(~Longitude,~Latitude,icon=icons, 
+  addAwesomeMarkers(~Longitude,~Latitude,icon=icons2, 
                     popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
-
 ```
+
+
+
+Column {data-width=200}
+-------------------------------------
+    
+### Choix de la carte
+    
+```{r,echo=FALSE}
+radioButtons("graph", label = "",
+    choices = c("Du 26 au 29 janvier"=1, "Du 1er janvier au 1er juin"=2), 
+    selected = 1)
+```
+   
+Column {data-width=800}
+-------------------------------------
+   
+### Nombre de créneaux de vacinations à 50 km de Rennes en fonction de la date
+
+```{r,echo=FALSE}
+renderLeaflet({
+  if (input$graph==1){
+    carte1
+  } else {
+    carte2
+  }
+})
+```
+
 
