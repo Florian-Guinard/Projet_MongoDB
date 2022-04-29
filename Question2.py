@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 import networkx as nx
+import matplotlib.pyplot as plt
+from bokeh.palettes import Set1,d3
 
 db_uri = "mongodb+srv://etudiant:ur2@clusterm1.0rm7t.mongodb.net/"
 client = MongoClient(db_uri)
@@ -18,8 +20,6 @@ cursor = db.hal_irisa_2021.aggregate([
 ])		
 
 l = list(cursor)
-
-
 
 
 # création d'une liste de dictionnaire avec son nom_prenom, son nombres de publications et ses publications
@@ -55,20 +55,22 @@ G = nx.Graph()
 G.add_nodes_from(myNodesList)
 G.add_edges_from(myEdgeList) 
 
-pods_of_links = []
+weight_of_links = []
 for (node1,node2,data) in G.edges(data=True):
-        pods_of_links.append(data['weight'])
+        weight_of_links.append(data['weight'])
 
 # Ajout des couleurs au noeuds
 list_color = []
 for auteur in liste_dico:
     if auteur["nb_publi"] > 12:
-        list_color.append("red")
+        list_color.append("ref")
     elif auteur["nb_publi"] > 11:
         list_color.append("orange")
     else:
         list_color.append("green")
 
+# graph
+nx.draw_circular(G,node_color = list_color, width=weight_of_links ,node_size=100,with_labels=True)
 
-nx.draw_circular(G,node_color = list_color, width=pods_of_links ,node_size=100,with_labels=True)
-
+plt.savefig("Graph.png", format="PNG")
+plt.show()
