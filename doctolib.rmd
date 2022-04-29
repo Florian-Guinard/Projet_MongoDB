@@ -61,6 +61,7 @@ requete2 <- mdb$aggregate('[
     {"$unwind":"$visit_motives.slots"},
     {"$match":{"visit_motives.slots":{"$gte": {"$date": "2022-01-01T00:00:00Z"},
                                       "$lt": {"$date": "2022-06-02T00:00:00Z"}}}},
+    {"$match":{"visit_motives.first_shot_motive":true}},
     {"$group":{"_id":{"location":"$location",
                       "nom":"$name"},
                "nb_creneaux":{"$sum":1}}}
@@ -158,6 +159,7 @@ carte2<- leaflet(data = result2) %>% setView(lng = Rennes[1], lat = Rennes[2], z
   addTiles() %>%
   addAwesomeMarkers(~Longitude,~Latitude,icon=icons2, 
                     popup = ~ paste(as.character(location),"<br/>Nombre de créneaux disponibles :",as.character(nb_creneaux)))
+
 ```
 
 
