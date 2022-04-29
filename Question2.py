@@ -63,7 +63,7 @@ for (node1,node2,data) in G.edges(data=True):
 list_color = []
 for auteur in liste_dico:
     if auteur["nb_publi"] > 12:
-        list_color.append("ref")
+        list_color.append("red")
     elif auteur["nb_publi"] > 11:
         list_color.append("orange")
     else:
