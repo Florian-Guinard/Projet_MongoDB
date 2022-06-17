@@ -62,9 +62,9 @@ for (node1,node2,data) in G.edges(data=True):
 # Ajout des couleurs au noeuds
 list_color = []
 for auteur in liste_dico:
-    if auteur["nb_publi"] > 12:
+    if auteur["nb_publi"] >= 15:
         list_color.append("red")
-    elif auteur["nb_publi"] > 11:
+    elif auteur["nb_publi"] >= 10:
         list_color.append("orange")
     else:
         list_color.append("green")
