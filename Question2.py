@@ -180,12 +180,8 @@ div = Div(text="""
 <p> La base publications contient les informations relatives aux publications de scientifiques du laboratoire IRISA . 
 On a visualisé les liens entre les auteurs de ces publications, en utilisant un code couleur qui permette de distinguer les auteurs par
 leurs nombres de publications et en représentant les liens (co-publications) existant entre les auteurs. 
-
-
-<a href="https://www.w3schools.com/html/tryit.asp?filename=tryhtml_images_link">
-<img src="img_accueil.png" alt="retour accueil">
-</a>
 </p>
+
 """)
 
 #########################################################
