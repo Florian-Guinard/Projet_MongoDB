@@ -181,7 +181,7 @@ div = Div(text="""
 On a visualisé les liens entre les auteurs de ces publications, en utilisant un code couleur qui permette de distinguer les auteurs par
 leurs nombres de publications et en représentant les liens (co-publications) existant entre les auteurs. 
 </p>
-<a href="../index.html">
+<a href="./index.html">
     <img src="img_accueil.png" alt="retour page d'accueil">
 </a>
 """)
