@@ -182,7 +182,7 @@ On a visualisé les liens entre les auteurs de ces publications, en utilisant un
 leurs nombres de publications et en représentant les liens (co-publications) existant entre les auteurs. 
 </p>
 <a href="../index.html">
-    <img src="img_accueil.jfif" alt="retour page d'accueil">
+    <img src="img_accueil.png" alt="retour page d'accueil">
 </a>
 """)
 
