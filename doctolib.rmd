@@ -171,7 +171,7 @@ Column {data-width=200}
     
 ```{r,echo=FALSE}
 radioButtons("graph", label = "",
-    choices = c("Du 26 au 29 janvier"=1, "Du 1er janvier au 1er juin"=2), 
+    choices = c("Du 26 au 29 janvier"=1, "Du 1er janvier au 1er juin pour les premières doses"=2), 
     selected = 1)
 ```
    
