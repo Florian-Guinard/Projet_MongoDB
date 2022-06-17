@@ -1,0 +1,86 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+      
+      
+        
+          
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.min.js"></script>
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="e83c4db5-c62c-4e87-b5bc-7d676f0e73e7" data-root-id="1063"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1328">
+          {"fcbe5241-7c6c-4e5d-a43b-4e6403cdc1ad":{"defs":[],"roots":{"references":[{"attributes":{"data":{"end":["Fromont","Guillemot","Giordano","Bannier","L\u00e9cuyer","Maumet","Giordano","Pacchierotti","Pontonnier","Pettr\u00e9","Olivier","Pacchierotti","J\u00e9z\u00e9quel","Olivier","Pacchierotti","Pacchierotti"],"start":["Lef\u00e8vre","Fromont","Fromont","Ferr\u00e9","Bannier","Bannier","Guillemot","Giordano","Dumont","Pontonnier","Pontonnier","L\u00e9cuyer","Combemale","Pettr\u00e9","Pettr\u00e9","Olivier"],"weight":[2,1,1,3,1,2,1,7,11,1,1,2,2,5,1,1]},"selected":{"id":"1084"},"selection_policy":{"id":"1083"}},"id":"1038","type":"ColumnDataSource"},{"attributes":{"callback":null,"tooltips":[["Auteur","@index"],["Nbre de publications","@adjusted_node_size"]]},"id":"1025","type":"HoverTool"},{"attributes":{},"id":"1074","type":"NodesOnly"},{"attributes":{},"id":"1083","type":"UnionRenderers"},{"attributes":{"coordinates":null,"data_source":{"id":"1034"},"glyph":{"id":"1051"},"group":null,"hover_glyph":null,"view":{"id":"1036"}},"id":"1035","type":"GlyphRenderer"},{"attributes":{"coordinates":null,"formatter":{"id":"1076"},"group":null,"major_label_policy":{"id":"1077"},"ticker":{"id":"1018"}},"id":"1017","type":"LinearAxis"},{"attributes":{"data":{"adjusted_node_size":[24,12,11,11,12,11,11,13,12,11,9,12,11,11,15,9,11,10,10,12],"index":["Lef\u00e8vre","Fromont","Ferr\u00e9","Bannier","Guillemot","Giordano","Dumont","Pontonnier","L\u00e9cuyer","Maumet","Combemale","J\u00e9z\u00e9quel","Pettr\u00e9","Olivier","Pacchierotti","Gribonval","Legeai","Martin","Rubino","Busnel"]},"selected":{"id":"1082"},"selection_policy":{"id":"1081"}},"id":"1034","type":"ColumnDataSource"},{"attributes":{"axis":{"id":"1017"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1020","type":"Grid"},{"attributes":{"source":{"id":"1034"}},"id":"1036","type":"CDSView"},{"attributes":{"source":{"id":"1038"}},"id":"1040","type":"CDSView"},{"attributes":{"axis":{"id":"1013"},"coordinates":null,"group":null,"ticker":null},"id":"1016","type":"Grid"},{"attributes":{"coordinates":null,"data_source":{"id":"1038"},"glyph":{"id":"1056"},"group":null,"hover_glyph":null,"view":{"id":"1040"}},"id":"1039","type":"GlyphRenderer"},{"attributes":{"coordinates":null,"group":null,"text":"R\u00e9seau des 20 auteurs les plus prolifiques et leurs interactions"},"id":"1005","type":"Title"},{"attributes":{},"id":"1076","type":"BasicTickFormatter"},{"attributes":{"end":12.1,"start":-12.1},"id":"1002","type":"Range1d"},{"attributes":{"below":[{"id":"1013"}],"center":[{"id":"1016"},{"id":"1020"}],"left":[{"id":"1017"}],"renderers":[{"id":"1032"}],"title":{"id":"1005"},"toolbar":{"id":"1026"},"x_range":{"id":"1002"},"x_scale":{"id":"1009"},"y_range":{"id":"1003"},"y_scale":{"id":"1011"}},"id":"1004","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1077","type":"AllLabels"},{"attributes":{},"id":"1084","type":"Selection"},{"attributes":{"graph_layout":{"Bannier":[5.877852377528619,8.09017005124884],"Busnel":[9.510565289413767,-3.090169255524872],"Combemale":[-9.999999850988392,-7.41109400419408e-07],"Dumont":[-3.0901702668196314,9.510564810592427],"Ferr\u00e9":[8.090169934023741,5.87785249475372],"Fromont":[9.510565289413767,3.0901701178080185],"Giordano":[-4.212206234360421e-07,10.0],"Gribonval":[1.3514205841015911e-07,-9.99999973376329],"Guillemot":[3.0901697025596992,9.510565406638866],"J\u00e9z\u00e9quel":[-9.51056525762726,-3.0901695535480918],"Lef\u00e8vre":[9.999999882774897,1.3311835367777422e-07],"Legeai":[3.0901711926757987,-9.51056454435572],"L\u00e9cuyer":[-8.090169902237234,5.87785249475372],"Martin":[5.8778505893893,-8.090170977105014],"Maumet":[-9.51056466158082,3.090170415831239],"Olivier":[-5.877850557602794,-8.090170977105014],"Pacchierotti":[-3.090171160889291,-9.51056454435572],"Pettr\u00e9":[-8.090169306190795,-5.877852824563452],"Pontonnier":[-5.877852345742113,8.09017005124884],"Rubino":[8.0901693379773,-5.877852824563452]}},"id":"1041","type":"StaticLayoutProvider"},{"attributes":{},"id":"1079","type":"BasicTickFormatter"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{"coordinates":null,"formatter":{"id":"1079"},"group":null,"major_label_policy":{"id":"1080"},"ticker":{"id":"1014"}},"id":"1013","type":"LinearAxis"},{"attributes":{},"id":"1080","type":"AllLabels"},{"attributes":{"fill_color":{"field":"adjusted_node_size","transform":{"id":"1050"}},"size":{"field":"adjusted_node_size"}},"id":"1051","type":"Circle"},{"attributes":{"end":12.1,"start":-12.1},"id":"1003","type":"Range1d"},{"attributes":{"children":[{"id":"1062"}]},"id":"1063","type":"Row"},{"attributes":{"active_scroll":{"id":"1022"},"tools":[{"id":"1021"},{"id":"1022"},{"id":"1023"},{"id":"1024"},{"id":"1025"}]},"id":"1026","type":"Toolbar"},{"attributes":{"line_alpha":{"value":0.8},"line_width":{"field":"weight"}},"id":"1056","type":"MultiLine"},{"attributes":{"children":[{"id":"1061"},{"id":"1004"}],"width":900},"id":"1062","type":"Column"},{"attributes":{},"id":"1011","type":"LinearScale"},{"attributes":{"text":"\n&lt;h1&gt; R\u00e9seau de publications scientifiques &lt;/h1&gt;\n&lt;p&gt; La base publications contient les informations relatives aux publications de scientifiques du laboratoire IRISA \npour l\u2019ann\u00e9e 2021 (extraites du service HAL). \nOn a visualis\u00e9 les liens entre les auteurs de ces publications, en utilisant un code couleur qui permette de distinguer les auteurs par\nleurs nombres de publications et en repr\u00e9sentant les liens (co-publications) existant entre les auteurs. \nLe nombre d\u2019auteurs pr\u00e9sents dans la base \u00e9tant tr\u00e8s grand, on se focalise sur les 20 auteurs les plus prolifiques \n(i.e. qui ont particip\u00e9 \u00e0 l\u2019\u00e9criture du plus grand nombre d\u2019articles) .\nNotre requ\u00eate MongoDB r\u00e9cup\u00e9re pour chacun de ces auteurs la liste de ses publications \n(la suite du traitement qui consiste \u00e0 calculer le nombre d\u2019articles commun par paire d\u2019auteurs est r\u00e9alis\u00e9e \n dans le script python). &lt;/p&gt;\n&lt;/br&gt;\n&lt;p&gt; Le nombre maximal de publications communes est de 11 et celui minimal est de 1.\nLes poids des traits sont les suivants : 11 (x1 : entre Pontonnier et Dumont), 7 (x1 : entre Giordano et Pacchierotti), 5 (x2), 4 (x1), 3 (x1), 2 (x4) ou 1 (x8). &lt;/p&gt;\n&lt;/br&gt;\n&lt;p&gt; Retour \u00e0 la page d'accueil : &lt;a href=\"../index.html\"&gt;ici&lt;/a&gt;&lt;/p&gt;\n"},"id":"1061","type":"Div"},{"attributes":{"high":24,"low":9,"palette":["#084594","#2171b5","#4292c6","#6baed6","#9ecae1","#c6dbef","#deebf7","#f7fbff"]},"id":"1050","type":"LinearColorMapper"},{"attributes":{},"id":"1014","type":"BasicTicker"},{"attributes":{},"id":"1081","type":"UnionRenderers"},{"attributes":{},"id":"1023","type":"SaveTool"},{"attributes":{"coordinates":null,"edge_renderer":{"id":"1039"},"group":null,"inspection_policy":{"id":"1074"},"layout_provider":{"id":"1041"},"node_renderer":{"id":"1035"},"selection_policy":{"id":"1073"}},"id":"1032","type":"GraphRenderer"},{"attributes":{},"id":"1082","type":"Selection"},{"attributes":{},"id":"1024","type":"ResetTool"},{"attributes":{},"id":"1073","type":"NodesOnly"},{"attributes":{},"id":"1018","type":"BasicTicker"},{"attributes":{},"id":"1022","type":"WheelZoomTool"},{"attributes":{},"id":"1021","type":"PanTool"}],"root_ids":["1063"]},"title":"Bokeh Application","version":"2.4.2"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            const fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  const docs_json = document.getElementById('1328').textContent;
+                  const render_items = [{"docid":"fcbe5241-7c6c-4e5d-a43b-4e6403cdc1ad","root_ids":["1063"],"roots":{"1063":"e83c4db5-c62c-4e87-b5bc-7d676f0e73e7"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    let attempts = 0;
+                    const timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>
